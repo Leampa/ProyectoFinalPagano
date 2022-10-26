@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+    <!--   //Agregado de Iconos y fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>PreEntrega3Pagano</title>
+
+    <!-- Linkeo el CSS -->
+    <link rel="stylesheet" href="./css/styles.css">
+  </head>
+
+  <body>
+    
+    <!-- Comienzo NavBar -->
+    <nav class="navbar">
+      <div class="navbar-center">
+        <span class="nav-icon">
+          <i class="fas fa-bars"></i>
+        </span>
+        <img src="./img/logo_gb.jpg"  class="logo" alt="logo-empresa" />
+        <div class="cart-btn">
+          <span class="nav-icon">
+            <i class="fas fa-cart-plus"></i>
+          </span>
+          <div class="cart-items">0</div>
+        </div>
+      </div>
+    </nav>
+    <!-- FIN NAVBAR -->
+    <!-- header -->
+    <header class="hero">
+      <div class="banner">
+        <h1 class="banner-title">Instumentos de medicion</h1>
+        <button class="banner-btn">Medi, compara y compra</button>
+      </div>
+    </header>
+    <!-- Fin header -->
+
+    <!-- Comienzo Productos -->
+    <section class="products">
+      <div class="section-title">
+        <h2></h2>
+      </div>
+      <div class="products-center">
+        <!-- START products > single product -->
+        <article class="product">
+          <div class="img-container">
+            <img src="./img/product-1.jpeg"nalt="product" class="product-img"/>
+            <button class="bag-btn" data-id="1">
+              <i class="fas fa-shopping-cart"></i>
+              Agregar a Carrito
+            </button>
+          </div>
+          <h3>Queen bed</h3>
+          <h4>Dumy</h4>
+        </article>
+        <!-- END products > single product -->
+      </div>
+    </section>
+
+
+    <!-- PONER LA CANTIDAD DE PRODUCTOS QUE QUERRAMOS -->
+  
+    <!--  END PRODUCTS -->
+
+    <!-- START CARD -->
+    <div class="cart-overlay">
+      <div class="cart">
+        <span class="close-cart">
+          <i class="fas fa-window-close"></i>
+        </span>
+        <h2>Carrito</h2>
+          <div class="cart-content">
+            <!-- Contenido carrito -->
+          <!--   <div class="cart-item">
+             
+            </div> -->
+          <!-- fin carrito -->
+        </div>
+        <div class="cart-footer">
+          <h3>El total es: $ <span class="cart-total">0</span></h3>
+          <button class="clear-cart banner-btn">clear cart</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer">
+        <h4>copyright</h4>
+      </div>
+    </footer>
+
+    <!-- Incluyo Js script -->
+    <script src="/js/main.js"></script>
+  </body>
+</html>
