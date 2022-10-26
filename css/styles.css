@@ -71,7 +71,7 @@ body {
   IDEM CON LA PALETA DE COLORES Y SU REFERENCIA -- PASAR A LA VISTA EN HTML $
 */
 
-  /* --------------- Hero ---------------- */
+  /* --------------- Header ---------------- */
 .hero {
     min-height: calc(100vh - 60px); /* VER LA UNIDAD VH VIEW HIGH MIN 32 33 */
     background: url("../img/Banner_medicion.jpg") center/cover no-repeat;
@@ -106,11 +106,11 @@ body {
     background: transparent;
     color:  var(--primaryColor); 
   }
-  /* --------------- End of Hero ---------------- */
+  /* --------------- Fin Header ---------------- */
 
 
 
-  /* --------------- Products ---------------- */
+  /* --------------- Productos ---------------- */
 
 .products {
     padding: 4rem 0;
@@ -185,12 +185,12 @@ body {
     text-align: center;
   }
   
-  /* ---------------End of Products ---------------- */
+  /* -------------- Fin Productos ---------------- */
 
 
   
 
-/* --------------- Cart ---------------- */
+/* --------------- Carrito ---------------- */
 .cart-overlay {
   position: fixed;
   top: 0;
@@ -238,7 +238,7 @@ body {
   letter-spacing: var(--mainSpacing);
   margin-bottom: 2rem;
 }
-/*---------- Cart Item -------------------- */
+/*---------- Articulo carrito -------------------- */
 .cart-item {
   display: grid;
   align-items: center;
@@ -271,7 +271,7 @@ body {
   color: var(--primaryColor);
   cursor: pointer;
 }
-/*---------- End of Cart Item -------------------- */
+/*----------Fin articulo carrito -------------------- */
 
 .cart-footer {
   margin-top: 2rem;
@@ -283,4 +283,4 @@ body {
   margin-bottom: 1rem;
 }
 
-/* --------------- End of Cart ---------------- */
+/* ---------------Fin carrito---------------- */

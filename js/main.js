@@ -109,7 +109,6 @@ class UI{
                 this.addCartItem(cartItem);
                 //muestra carrito
                 this.showCart();
-
             });
             
         });
@@ -149,6 +148,7 @@ class UI{
         //compruebo la composicion del innerHtml
         //console.log(cartContent);
     }
+
     showCart(){
         cartOverlay.classList.add('transparentBcg');
         cartDOM.classList.add('showCart');
@@ -161,6 +161,7 @@ class UI{
         cartBtn.addEventListener('click', this.showCart);
         closeCartBtn.addEventListener('click', this.hideCart)
     }
+
     populateCart(cart){
         cart.forEach(item =>this.addCartItem(item));
     }
@@ -169,6 +170,7 @@ class UI{
         cartOverlay.classList.remove('transparentBcg');
         cartDOM.classList.remove('showCart');
     }
+
     cartLogic(){
         //boton vaciar carrito
         clearCartBtn.addEventListener('click',()=>{
@@ -180,7 +182,6 @@ class UI{
             //console.log(event.target);
             
             if(event.target.classList.contains('remove-item')){
-
                 let removeItem = event.target;
                 //analizo boton de eliminar
                 //console.log(removeItem);
@@ -194,7 +195,6 @@ class UI{
                 let id =addAmount.dataset.id;
                 //verifico por consola
                 //console.log(addAmount);
-
                 //Defino variable y operacion de suma
                 let tempItem = cart.find(item=> item.id===id);
                 tempItem.amount = tempItem.amount + 1;
@@ -208,7 +208,6 @@ class UI{
                 let id = lowerAmount.dataset.id;
                 let tempItem = cart.find(item => item.id ===id);
                 tempItem.amount=tempItem.amount -1;
-
                 if(tempItem.amount>0){
                     Storage.saveCart(cart);
                     this.setCartValues(cart);
@@ -226,12 +225,12 @@ class UI{
         //ciclo para limpiar los elementos del array carrito
         cartItems.forEach(id => this.removeItem(id));
         console.log(cartContent.children);
-
         while (cartContent.children.length>0){
             cartContent.removeChild(cartContent.children[0])
         }
         this.hideCart();
     }
+
     removeItem(id){
         cart = cart.filter(item => item.id !==id)
         this.setCartValues(cart);
@@ -240,12 +239,11 @@ class UI{
         let button = this.getSingleButton(id);
         button.disabled= false;
         button.innerHTML= `<i class="fas fa-shopping-cart"></i>add to cart `
-
     }
+
     getSingleButton(id){
         return buttonsDOM.find(button =>button.dataset.id ===id);
     }
-
 }
 
 //Guardado local 
@@ -266,16 +264,13 @@ class Storage{
     }
 }
 
-
 //Agregamos las funcionalidades a los botones
-
 document.addEventListener("DOMContentLoaded", ()=>{
     const ui = new UI();
     const products = new Products();
     //configuracion app
     ui.setupAPP();
-
-    //get all products
+    //Todos los productos
     products.getProducts().then(products=> {
         ui.displayProducts(products);
         Storage.saveProducts(products);
