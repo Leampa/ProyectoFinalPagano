@@ -71,7 +71,7 @@ body {
 
   /* --------------- Header ---------------- */
 .headerh {
-    min-height: calc(100vh - 60px); /* VER LA UNIDAD VH VIEW HIGH MIN 32 33 */
+    min-height: calc(70vh - 60px); /* VER LA UNIDAD VH VIEW HIGH MIN 32 33 */
     background: url("../img/Banner_medicion.jpg") center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -296,3 +296,16 @@ body {
 
 /* ---------------Fin carrito---------------- */
 
+.footer {
+  margin: 1rem;
+  letter-spacing: var(--espacioBase);
+  text-align: center;
+  
+}
+
+.lis-foot li {
+    
+  display: inline; 
+  margin: 1rem;
+
+}
