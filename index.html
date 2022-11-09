@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 
-    <!--   //Agregado de Iconos y fonts -->
+    <!-- Agregado de Iconos y fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>PreEntrega3Pagano</title>
+    <title>ProyectoFinalPagano</title>
 
     <!-- Linkeo el CSS -->
     <link rel="stylesheet" href="./css/styles.css">
@@ -21,33 +21,35 @@
           <i class="fas fa-bars"></i>
         </span>
         <img src="./img/logo_gb.jpg"  class="logo" alt="logo-empresa" />
-        <div class="cart-btn">
+        <div class="carrito-btn">
           <span class="nav-icon">
             <i class="fas fa-cart-plus"></i>
           </span>
-          <div class="cart-items">0</div>
+          <div class="carrito-items">0</div>
         </div>
       </div>
     </nav>
     <!-- FIN NAVBAR -->
     <!-- header -->
-    <header class="hero">
+    <header class="headerh">
       <div class="banner">
-        <h1 class="banner-title">Instumentos de medicion</h1>
+        <h1 class="banner-titulo">Instumentos de medicion</h1>
         <button class="banner-btn">Medi, compara y compra</button>
       </div>
     </header>
     <!-- Fin header -->
+    
     <!-- Comienzo Productos -->
-    <section class="products">
+    <section class="productos">
       <div class="section-title">
-        <h2></h2>
+        <h1 >Productos</h1>
+        <h3>A continuacion podras calcular el precio de nuestros principales productos</h3>
       </div>
-      <div class="products-center">
-        <!-- START products > single product -->
-        <article class="product">
+      <div class="productos-central">
+        <!-- Arrancan los Productos -->
+        <article class="producto">
           <div class="img-container">
-            <img src="./img/product-1.jpeg"nalt="product" class="product-img"/>
+            <img src="./img/product-1.jpeg" alt="producto" class="productos-img"/>
             <button class="bag-btn" data-id="1">
               <i class="fas fa-shopping-cart"></i>
               Agregar a Carrito
@@ -56,25 +58,25 @@
           <h3></h3>
           <h4></h4>
         </article>
-        <!-- END products > single product -->
+        <!-- Fin productos --> 
       </div>
     </section>
 
-    <div class="cart-overlay">
-      <div class="cart">
-        <span class="close-cart">
+    <div class="carrito-sup">
+      <div class="carrito">
+        <span class="close-carrito">
           <i class="fas fa-window-close"></i>
         </span>
         <h2>Carrito</h2>
-          <div class="cart-content">
+          <div class="carrito-content">
             <!-- Contenido carrito -->
-          <!--   <div class="cart-item">
+          <!--   <div class="carrito-item">
             </div> -->
           <!-- fin carrito -->
         </div>
-        <div class="cart-footer">
-          <h3>El total es: $ <span class="cart-total">0</span></h3>
-          <button class="clear-cart banner-btn">Limpiar Carrito</button>
+        <div class="carrito-footer">
+          <h3>El total es: $ <span class="carrito-total">0</span></h3>
+          <button class="limpiar-carrito banner-btn">Limpiar Carrito</button>
         </div>
       </div>
     </div>
@@ -83,6 +85,9 @@
         <h4>Copyright 2022</h4>
       </div>
     </footer>
+
+    <!-- Incluyo libreria -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Incluyo Js script -->
     <script src="/js/main.js"></script>

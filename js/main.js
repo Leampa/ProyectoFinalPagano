@@ -1,79 +1,80 @@
 //Comienzo con el .JS
 
-
 //Objeto productos : En extension .json
 
 //Variables definidas, separadas por coma y taggeadas a las clases del HTML
 
-const cartBtn = document.querySelector('.cart-btn'),
-closeCartBtn = document.querySelector('.close-cart'),
-clearCartBtn = document.querySelector('.clear-cart'),
-cartDOM = document.querySelector('.cart'),
-cartOverlay = document.querySelector('.cart-overlay'),
-cartItems = document.querySelector('.cart-items'),
-cartTotal = document.querySelector('.cart-total'),
-cartContent = document.querySelector('.cart-content'),
-productsDOM = document.querySelector('.products-center');
+const carritoBtn = document.querySelector('.carrito-btn'),
+closeCarritoBtn = document.querySelector('.close-carrito'),
+limpiarCarritoBtn = document.querySelector('.limpiar-carrito'),
+carritoDOM = document.querySelector('.carrito'),
+carritoSup = document.querySelector('.carrito-sup'),
+carritoItems = document.querySelector('.carrito-items'),
+carritoTotal = document.querySelector('.carrito-total'),
+carritoContent = document.querySelector('.carrito-content'),
+productosDOM = document.querySelector('.productos-central'),
+btnCentral = document.querySelector('.banner-btn');
+
 
 const btns = document.querySelectorAll('.bag-btn');
 
 
 //Carrito  array
-let cart = [];
+let carrito = [];
 
 //botones
 let buttonsDOM = [];
 
 //Generando los productos
-class Products{
-    async getProducts(){
+class Productos{
+    async getProductos(){
         try{
             let result = await fetch('products.json');
             let data = await result.json();
-            let products = data.items;
-            products = products.map(item=>{
-                const {title, price} = item.fields;
+            let productos = data.items;
+            productos = productos.map(item=>{
+                const {articulo, precio} = item.campos;
                 const {id} = item.sys;
-                const image = item.fields.image.fields.file.url;
-                return{title, price, id, image};
+                const imagen = item.campos.imagen.campos.file.url;
+                return{articulo, precio, id, imagen};
             })
-            return products;
+            return productos;
             }catch{
             console.log(error);
         } 
     }
 }
 
-//Visualizacion de los productos
+//Visualizacion de los productos en carrito
 
 class UI{
-    displayProducts(products){
-    //console.log(products);
+    displayProductos(productos){
+    //console.log(productos);
     let result = '';
-    products.forEach(product => {
+    productos.forEach(producto => {
         result +=`
         <!-- Comienzo productos  -->
-        <article class="product">
+        <article class="producto">
           <div class="img-container">
             <img
             //Agrego generico
-              src=${product.image}
-              alt="product"
-              class="product-img"
+              src=${producto.imagen}
+              alt="producto"
+              class="productos-img"
             />
-            <button class="bag-btn" data-id=${product.id}>
+            <button class="bag-btn" data-id=${producto.id}>
               <i class="fas fa-shopping-cart"></i>
               Agregar a Carrito
             </button>
           </div>
-          <h3>${product.title}</h3>
-          <h4>$ ${product.price}</h4>
+          <h3>${producto.articulo}</h3>
+          <h4>$ ${producto.precio}</h4>
         </article>
         <!-- fin prudctos  -->
         `;
     });
     //Agrego el innerHTML para generar los productos
-    productsDOM.innerHTML = result;
+    productosDOM.innerHTML = result;
     }
     getBagButtons(){
         const buttons = [...document.querySelectorAll('.bag-btn')];
@@ -81,61 +82,61 @@ class UI{
         buttons.forEach(button =>{
             let id = button.dataset.id;
             //console.log(id); chequeo l anumeracion del ID
-            let inCart = cart.find(item => item.id === id);
-            if(inCart){
+            let enCarrito = carrito.find(item => item.id === id);
+            if(enCarrito){
                 button.innerText = "En Carrito";
                 button.disabled = true;
             }
             button.addEventListener('click', (event)=>{
                 event.target.innerText = "En carrito";
                 event.target.disabled = true;
-                //Tomo productos de products
-                let cartItem = {...Storage.getProduct(id), amount:1};
+                //Tomo productos de productos
+                let carritoItem = {...Storage.getProducto(id), amount:1};
                 //chequeo que funcione 
-                //console.log(cartItem);
+                //console.log(carritoItem);
 
                 //agrego productos al carrito
-                cart = [...cart,cartItem];
+                carrito = [...carrito,carritoItem];
                 //compruebo que se agregue al carro
-                //console.log(cart);
+                //console.log(carrito);
 
                 //guardo la info en el localStorage
-                Storage.saveCart(cart);
+                Storage.saveCarrito(carrito);
 
                 //Asigno numero de productos a carrito
-                this.setCartValues(cart);
+                this.setCarritoValues(carrito);
 
                 //enumeracion productos en carrito
-                this.addCartItem(cartItem);
+                this.addCarritoItem(carritoItem);
                 //muestra carrito
-                this.showCart();
+                this.showCarrito();
             });
             
         });
     }
     
-    //funcion carrito
-    setCartValues(cart){
+    //funcion dentro de carrito cantidades
+    setCarritoValues(carrito){
         let tempTotal = 0;
         let itemsTotal = 0;
-        cart.map(item =>{
-            tempTotal += item.price* item.amount;
+        carrito.map(item =>{
+            tempTotal += item.precio* item.amount;
             itemsTotal += item.amount;
         })
-        cartTotal.innerText = parseFloat(tempTotal.toFixed(2))
-        cartItems.innerText=itemsTotal;
+        carritoTotal.innerText = parseFloat(tempTotal.toFixed(2))
+        carritoItems.innerText=itemsTotal;
         //compruebo que este funcionando por consola
-        //console.log(cartTotal, cartItems);
+        //console.log(carritoTotal, carritoItems);
     }
 
-    addCartItem(item){
+    addCarritoItem(item){
         const div = document.createElement('div');
-        div.classList.add('cart-item');
+        div.classList.add('carrito-item');
         div.innerHTML = `
-        <img src=${item.image} alt="product" />
+        <img src=${item.imagen} alt="producto" />
         <div>
-          <h4>${item.title}</h4>
-          <h5>$${item.price}</h5>
+          <h4>${item.articulo}</h4>
+          <h5>$${item.precio}</h5>
           <span class="remove-item" data-id=${item.id}>remove</span>
         </div>
         <div>
@@ -144,40 +145,40 @@ class UI{
           <i class="fas fa-chevron-down" data-id=${item.id}></i>
         </div>
         `;
-        cartContent.appendChild(div);
+        carritoContent.appendChild(div);
         //compruebo la composicion del innerHtml
-        //console.log(cartContent);
+        //console.log(carritoContent);
     }
 
-    showCart(){
-        cartOverlay.classList.add('transparentBcg');
-        cartDOM.classList.add('showCart');
+    showCarrito(){
+        carritoSup.classList.add('transparentBcg');
+        carritoDOM.classList.add('mostrarCarrito');
     }
     
     setupAPP(){
-        cart= Storage.getCart();
-        this.setCartValues(cart);
-        this.populateCart(cart);
-        cartBtn.addEventListener('click', this.showCart);
-        closeCartBtn.addEventListener('click', this.hideCart)
+        carrito= Storage.getCarrito();
+        this.setCarritoValues(carrito);
+        this.populateCarrito(carrito);
+        carritoBtn.addEventListener('click', this.showCarrito);
+        closeCarritoBtn.addEventListener('click', this.hideCarrito)
     }
 
-    populateCart(cart){
-        cart.forEach(item =>this.addCartItem(item));
+    populateCarrito(carrito){
+        carrito.forEach(item =>this.addCarritoItem(item));
     }
 
-    hideCart(){
-        cartOverlay.classList.remove('transparentBcg');
-        cartDOM.classList.remove('showCart');
+    hideCarrito(){
+        carritoSup.classList.remove('transparentBcg');
+        carritoDOM.classList.remove('mostrarCarrito');
     }
 
-    cartLogic(){
+    carritoLogic(){
         //boton vaciar carrito
-        clearCartBtn.addEventListener('click',()=>{
-            this.clearCart();
+        limpiarCarritoBtn.addEventListener('click',()=>{
+            this.limpiarCarrito();
         });
         //funcionalidad del carirto
-        cartContent.addEventListener('click', event=>{
+        carritoContent.addEventListener('click', event=>{
             //analizo por consola la calse del boton
             //console.log(event.target);
             
@@ -188,7 +189,7 @@ class UI{
                 let id = removeItem.dataset.id;
                 //verifico la ruta del boton eliminar para usar luego en el removechild
                 //console.log(removeItem.parentElement.parentElement);
-                cartContent.removeChild(removeItem.parentElement.parentElement);
+                carritoContent.removeChild(removeItem.parentElement.parentElement);
                 this.removeItem(id);
             }else if(event.target.classList.contains('fa-chevron-up')){
                 let addAmount = event.target;
@@ -196,49 +197,49 @@ class UI{
                 //verifico por consola
                 //console.log(addAmount);
                 //Defino variable y operacion de suma
-                let tempItem = cart.find(item=> item.id===id);
+                let tempItem = carrito.find(item=> item.id===id);
                 tempItem.amount = tempItem.amount + 1;
-                Storage.saveCart(cart);
-                this.setCartValues(cart);
+                Storage.saveCarrito(carrito);
+                this.setCarritoValues(carrito);
                 addAmount.nextElementSibling.innerText = tempItem.amount;  
                 
                 //ahora voy por la resta
             }else if(event.target.classList.contains('fa-chevron-down')){
                 let lowerAmount=event.target;
                 let id = lowerAmount.dataset.id;
-                let tempItem = cart.find(item => item.id ===id);
+                let tempItem = carrito.find(item => item.id ===id);
                 tempItem.amount=tempItem.amount -1;
                 if(tempItem.amount>0){
-                    Storage.saveCart(cart);
-                    this.setCartValues(cart);
+                    Storage.saveCarrito(carrito);
+                    this.setCarritoValues(carrito);
                     lowerAmount.previousElementSibling.innerText = tempItem.amount;
                 }else{
-                    cartContent.removeChild(lowerAmount.parentElement.parentElement);
+                    carritoContent.removeChild(lowerAmount.parentElement.parentElement);
                     this.removeItem(id);
                 }
             }
         });
     }
     
-    clearCart(){
-        let cartItems = cart.map(item => item.id);
+    limpiarCarrito(){
+        let carritoItems = carrito.map(item => item.id);
         //ciclo para limpiar los elementos del array carrito
-        cartItems.forEach(id => this.removeItem(id));
-        console.log(cartContent.children);
-        while (cartContent.children.length>0){
-            cartContent.removeChild(cartContent.children[0])
+        carritoItems.forEach(id => this.removeItem(id));
+        console.log(carritoContent.children);
+        while (carritoContent.children.length>0){
+            carritoContent.removeChild(carritoContent.children[0])
         }
-        this.hideCart();
+        this.hideCarrito();
     }
 
     removeItem(id){
-        cart = cart.filter(item => item.id !==id)
-        this.setCartValues(cart);
-        Storage.saveCart(cart);
+        carrito = carrito.filter(item => item.id !==id)
+        this.setCarritoValues(carrito);
+        Storage.saveCarrito(carrito);
         //habilitar leyenda sobre productos para agregar
         let button = this.getSingleButton(id);
         button.disabled= false;
-        button.innerHTML= `<i class="fas fa-shopping-cart"></i>add to cart `
+        button.innerHTML= `<i class="fas fa-shopping-carrito"></i>Agregar a carrito `
     }
 
     getSingleButton(id){
@@ -249,37 +250,45 @@ class UI{
 //Guardado local 
 
 class Storage{
-    static saveProducts(products){
-        localStorage.setItem('products', JSON.stringify(products));
+    static guardarProductos(productos){
+        localStorage.setItem('productos', JSON.stringify(productos));
     }
-    static getProduct(id){
-        let products = JSON.parse(localStorage.getItem('products'));
-        return products.find(product => product.id === id)
+    static getProducto(id){
+        let productos = JSON.parse(localStorage.getItem('productos'));
+        return productos.find(productos => productos.id === id)
     }
-    static saveCart(){
-        localStorage.setItem('cart',JSON.stringify(cart));
+    static saveCarrito(){
+        localStorage.setItem('carrito',JSON.stringify(carrito));
     }
-    static getCart(){
-        return localStorage.getItem('cart')?JSON.parse(localStorage.getItem('cart')):[]
+    static getCarrito(){
+        return localStorage.getItem('carrito')?JSON.parse(localStorage.getItem('carrito')):[]
     }
 }
 
 //Agregamos las funcionalidades a los botones
 document.addEventListener("DOMContentLoaded", ()=>{
     const ui = new UI();
-    const products = new Products();
+    const productos = new Productos();
     //configuracion app
     ui.setupAPP();
     //Todos los productos
-    products.getProducts().then(products=> {
-        ui.displayProducts(products);
-        Storage.saveProducts(products);
+    productos.getProductos().then(productos=> {
+        ui.displayProductos(productos);
+        Storage.guardarProductos(productos);
         }).then(()=>{
             ui.getBagButtons();
-            ui.cartLogic()
+            ui.carritoLogic()
         });
     }
 );
 
-
+//Aplicacion libreria SweetAlert
+btnCentral.addEventListener("click", ()=>{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...Pagina en estado de midicion',
+        text: 'Disculpe las molestias',
+        footer: '<a href="">Chatea con nosotros</a>'
+    })
+})
 

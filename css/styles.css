@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 
 :root {
-  --primaryColor: #2e8681;
-  --mainWhite:   #fff; /* #163d75; */
-  --mainBlack: #222;
-  --mainGrey: #384343;
-  --mainSpacing: 0.1rem;
-  --mainTransition: all 0.3s linear;
+  --colorPrimario: #2e8681;
+  --blancoBase:   #fff; /* #163d75; */
+  --negroBase: #222;
+  --grisBase: #384343;
+  --espacioBase: 0.1rem;
+  --transicion: all 0.3s linear;
 }
 
 * {
@@ -15,8 +15,8 @@
   box-sizing: border-box;
 }
 body {
-  color: var(--mainBlack);
-  background: var(--mainWhite);
+  color: var(--negroBase);
+  background: var(--blancoBase);
   font-family: "Lato", sans-serif;
 }
 
@@ -52,27 +52,25 @@ body {
   .nav-icon {
     font-size: 1.5rem;
   }
-  .cart-btn {
+  .carrito-btn {
     position: relative;
     cursor: pointer;
   }
-  .cart-items {
+  .carrito-items {
     position: absolute;
     top: -8px;
     right: -8px;
-    background: var(--primaryColor);
+    background: var(--colorPrimario);
     padding: 0 5px;
     border-radius: 30%;
-    color: var(--mainWhite);
+    color: var(--blancoBase);
   }
-  /* --------------- End of Navbar ---------------- */
+  /* --------------- fin Navbar ---------------- */
 
-/* VER LAS UNIDADES REM, CAMBIAR A PX 
-  IDEM CON LA PALETA DE COLORES Y SU REFERENCIA -- PASAR A LA VISTA EN HTML $
-*/
+
 
   /* --------------- Header ---------------- */
-.hero {
+.headerh {
     min-height: calc(100vh - 60px); /* VER LA UNIDAD VH VIEW HIGH MIN 32 33 */
     background: url("../img/Banner_medicion.jpg") center/cover no-repeat;
     display: flex;
@@ -85,26 +83,26 @@ body {
     display: inline-block;
     padding: 2rem;
   }
-  .banner-title {
+  .banner-titulo {
     font-size: 3.4rem;
     text-transform: uppercase;
-    letter-spacing: var(--mainSpacing);
+    letter-spacing: var(--espacioBase);
     margin-bottom: 3rem;
   }
   .banner-btn {
     padding: 1rem 3rem;
     text-transform: uppercase;
-    letter-spacing: var(--mainSpacing);
+    letter-spacing: var(--espacioBase);
     font-size: 1rem;
-    background:  var(--primaryColor); 
-    color: var(--mainBlack);
-    border: 1px solid  var(--primaryColor) ;
-    transition: var(--mainTransition);
+    background:  var(--colorPrimario); 
+    color: var(--negroBase);
+    border: 1px solid  var(--colorPrimario) ;
+    transition: var(--transicion);
     cursor: pointer;
   }
   .banner-btn:hover {
     background: transparent;
-    color:  var(--primaryColor); 
+    color:  var(--colorPrimario); 
   }
   /* --------------- Fin Header ---------------- */
 
@@ -112,23 +110,38 @@ body {
 
   /* --------------- Productos ---------------- */
 
-.products {
+.productos {
     padding: 4rem 0;
+  }
+  .section-title h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-transform: capitalize;
+
+  }
+  .section-title h3 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 5rem;
+    text-transform: capitalize;
+    letter-spacing: var(--espacioBase);
   }
   .section-title h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 5rem;
     text-transform: capitalize;
-    letter-spacing: var(--mainSpacing);
+    letter-spacing: var(--espacioBase);
   }
-  .products-center {
+  .productos-central {
     width: 90vw;
     margin: 0 auto;
     max-width: 1170px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    /* SI QUISIERA REPASAR ESTA  PROPIEDAD 45/50 MIN LOGRAMOS RESPONSIVE SIN MEDIA QUERY */
+
+    /* SI QUISIERA REPASAR ESTA  PROPIEDAD 45/50 MIN LOGRARIA RESPONSIVE SIN MEDIA QUERY */
     
     grid-column-gap: 1.5rem;
     grid-row-gap: 2rem;
@@ -141,68 +154,66 @@ body {
     position: absolute;
     top: 70%;
     right: 0;
-    background: var(--primaryColor); 
+    background: var(--colorPrimario); 
     border: none;
     text-transform: uppercase;
     padding: 0.5rem 0.75rem;
-    letter-spacing: var(--mainSpacing);
+    letter-spacing: var(--espacioBase);
     font-weight: bold;
-    transition: var(--mainTransition);
+    transition: var(--transicion);
     transform: translateX(101%);
     cursor: pointer;
   }
   .bag-btn:hover {
-    color: var(--mainWhite);
+    color: var(--blancoBase);
   }
-  .fa-shopping-cart {
+  .fa-shopping-carrito {
     margin-right: 0.5rem;
   }
   .img-container:hover .bag-btn {
     transform: translateX(0);
   }
-  .product-img {
+  .productos-img {
     display: block;
     width: 100%;
     min-height: 12rem;
-    transition: var(--mainTransition);
+    transition: var(--transicion);
   }
-  .img-container:hover .product-img {
+  .img-container:hover .productos-img {
     opacity: 0.5;
   }
   
-  .product h3 {
+  .productos h3 {
     text-transform: capitalize;
     font-size: 1.1rem;
     margin-top: 1rem;
-    letter-spacing: var(--mainSpacing);
+    letter-spacing: var(--espacioBase);
     text-align: center;
   }
   
-  .product h4 {
+  .productos h4 {
     margin-top: 0.7rem;
-    letter-spacing: var(--mainSpacing);
-    color: var(--primaryColor)
+    letter-spacing: var(--espacioBase);
+    color: var(--colorPrimario);
     text-align: center;
   }
   
   /* -------------- Fin Productos ---------------- */
-
-
-  
+ 
 
 /* --------------- Carrito ---------------- */
-.cart-overlay {
+.carrito-sup {
   position: fixed;
   top: 0;
   right: 0;
   width: 100%;
   height: 100%;
-  transition: var(--mainTransition);
+  transition: var(--transicion);
   background:#163e7576;
   z-index: 2;
   visibility: hidden;
 }
-.cart {
+.carrito {
   position: fixed;
   top: 0;
   right: 0;
@@ -212,52 +223,52 @@ body {
   z-index: 3;
   background: rgb(186, 183, 188);
   padding: 1.5rem;
-  transition: var(--mainTransition);
+  transition: var(--transicion);
   transform: translateX(100%);
 }
-.showCart {
+.mostrarCarrito {
   transform: translateX(0);
 }
 .transparentBcg {
   visibility: visible;
 }
 @media screen and (min-width: 768px) {
-  .cart {
+  .carrito {
     width: 30vw;
     min-width: 450px;
   }
 }
 
-.close-cart {
+.close-carrito {
   font-size: 1.7rem;
   cursor: pointer;
 }
-.cart h2 {
+.carrito h2 {
   text-transform: capitalize;
   text-align: center;
-  letter-spacing: var(--mainSpacing);
+  letter-spacing: var(--espacioBase);
   margin-bottom: 2rem;
 }
 /*---------- Articulo carrito -------------------- */
-.cart-item {
+.carrito-item {
   display: grid;
   align-items: center;
   grid-template-columns: auto 1fr auto;
   grid-column-gap: 1.5rem;
   margin: 1.5rem 0;
 }
-.cart-item img {
+.carrito-item img {
   width: 75px;
   height: 75px;
 }
-.cart-item h4 {
+.carrito-item h4 {
   font-size: 0.85rem;
   text-transform: capitalize;
-  letter-spacing: var(--mainSpacing);
+  letter-spacing: var(--espacioBase);
 }
-.cart-item h5 {
+.carrito-item h5 {
   margin: 0.5rem 0;
-  letter-spacing: var(--mainSpacing);
+  letter-spacing: var(--espacioBase);
 }
 .item-amount {
   text-align: center;
@@ -268,19 +279,20 @@ body {
 }
 .fa-chevron-up,
 .fa-chevron-down {
-  color: var(--primaryColor);
+  color: var(--colorPrimario);
   cursor: pointer;
 }
 /*----------Fin articulo carrito -------------------- */
 
-.cart-footer {
+.carrito-footer {
   margin-top: 2rem;
-  letter-spacing: var(--mainSpacing);
+  letter-spacing: var(--espacioBase);
   text-align: center;
 }
-.cart-footer h3 {
+.carrito-footer h3 {
   text-transform: capitalize;
   margin-bottom: 1rem;
 }
 
 /* ---------------Fin carrito---------------- */
+
