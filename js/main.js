@@ -15,7 +15,6 @@ productosDOM = document.querySelector('.productos-central'),
 btnCentral = document.querySelector('.banner-btn'),
 contactoMensaje = document.querySelector('.contacto');
 
-
 const btns = document.querySelectorAll('.bag-btn');
 
 
@@ -311,6 +310,4 @@ contactoMensaje.addEventListener("click", ()=>{
         }
         
         })()
-
-
 });
