@@ -67,8 +67,6 @@ body {
   }
   /* --------------- fin Navbar ---------------- */
 
-
-
   /* --------------- Header ---------------- */
 .headerh {
     min-height: calc(70vh - 60px); /* VER LA UNIDAD VH VIEW HIGH MIN 32 33 */
@@ -304,8 +302,6 @@ body {
 }
 
 .lis-foot li {
-    
   display: inline; 
   margin: 1rem;
-
 }

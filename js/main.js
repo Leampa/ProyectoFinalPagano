@@ -3,7 +3,6 @@
 //Objeto productos : En extension .json
 
 //Variables definidas, separadas por coma y taggeadas a las clases del HTML
-
 const carritoBtn = document.querySelector('.carrito-btn'),
 closeCarritoBtn = document.querySelector('.close-carrito'),
 limpiarCarritoBtn = document.querySelector('.limpiar-carrito'),
@@ -13,7 +12,8 @@ carritoItems = document.querySelector('.carrito-items'),
 carritoTotal = document.querySelector('.carrito-total'),
 carritoContent = document.querySelector('.carrito-content'),
 productosDOM = document.querySelector('.productos-central'),
-btnCentral = document.querySelector('.banner-btn');
+btnCentral = document.querySelector('.banner-btn'),
+contactoMensaje = document.querySelector('.contacto');
 
 
 const btns = document.querySelectorAll('.bag-btn');
@@ -290,5 +290,27 @@ btnCentral.addEventListener("click", ()=>{
         text: 'Disculpe las molestias',
         footer: '<a href="">Chatea con nosotros</a>'
     })
-})
+});
 
+contactoMensaje.addEventListener("click", ()=>{
+  	
+    (async () => {
+
+        const { value: text } = await Swal.fire({
+          input: 'textarea',
+          inputLabel: 'Mensaje/Comentario/Medida',
+          inputPlaceholder: 'Escriba aqui lo que quiera...',
+          inputAttributes: {
+            'aria-label': 'Escriba aqui lo que quiera'
+          },
+          showCancelButton: true
+        })
+        
+        if (text) {
+          Swal.fire(text)
+        }
+        
+        })()
+
+
+});
